@@ -30,7 +30,7 @@ It implements:
 | POST   | `/api/auth/register`    | Register new user                    |
 | POST   | `/api/auth/login`       | Login, return access + refresh token|
 | GET    | `/api/user`        | Get current user info (protected)   |
-| POST   | `/api/auth/refresh` | Refresh access token                |
+| GET   | `/api/auth/refresh` | Refresh access token                |
 | POST   | `/api/auth/logout`      | Invalidate refresh token             |
 
 > Refresh token is stored in a `httpOnly` cookie
