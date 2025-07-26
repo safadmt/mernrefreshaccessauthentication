@@ -27,11 +27,11 @@ It implements:
 
 | Method | Endpoint           | Description                          |
 |--------|--------------------|--------------------------------------|
-| POST   | `/api/register`    | Register new user                    |
-| POST   | `/api/login`       | Login, return access + refresh token|
+| POST   | `/api/auth/register`    | Register new user                    |
+| POST   | `/api/auth/login`       | Login, return access + refresh token|
 | GET    | `/api/user`        | Get current user info (protected)   |
-| POST   | `/api/refresh-token` | Refresh access token                |
-| POST   | `/api/logout`      | Invalidate refresh token             |
+| POST   | `/api/auth/refresh` | Refresh access token                |
+| POST   | `/api/auth/logout`      | Invalidate refresh token             |
 
 > Refresh token is stored in a `httpOnly` cookie
 
