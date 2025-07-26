@@ -66,3 +66,30 @@ NODE_ENV =
 - Fronted .env
 
 VITE_API_URL = 
+
+
+## 🚀 Getting Started
+
+To get the project up and running on your local machine:
+
+### 🔄 Clone the Repository
+
+# Clone the repository
+git clone https://github.com/safadmt/mernrefreshaccessauthentication.git
+cd mernrefreshaccessauthentication
+
+# Install backend dependencies
+cd server
+npm install
+
+# Set up backend environment variables (.env file)
+# Then start the backend server
+npm start
+
+# Open a new terminal or go back to project root
+cd ../client
+npm install
+
+# Set up frontend environment variables (.env file)
+# Then start the React dev server
+npm run dev
