@@ -83,12 +83,12 @@ It implements:
 
 # Backend .env
 
-PORT=
-MONGO_URI=mongodb://localhost:27017/auth-db
-ACCESS_TOKEN_SECRET=youraccesstokensecret
-REFRESH_TOKEN_SECRET=yourrefreshtokensecret
-ALLOWED_ORIGIN=http://localhost:5173
-NODE_ENV=development
+- PORT=
+- MONGO_URI=mongodb://localhost:27017/auth-db
+- ACCESS_TOKEN_SECRET=youraccesstokensecret
+ - REFRESH_TOKEN_SECRET=yourrefreshtokensecret
+- ALLOWED_ORIGIN=http://localhost:5173
+- NODE_ENV=development
 
 # Frontend .env
 
