@@ -14,8 +14,6 @@ import jwt from 'jsonwebtoken';
 export const registerUser = async (req, res) => {
   const { email, password: plainTextPassword, username } = req.body;
 
-  console.log(req.body, 'req body in register user');
-
   // Check if required values exist
   if (!email || !plainTextPassword || !username) {
     return res.status(400).json({ error: 'Email, password, and username are required' });
@@ -70,7 +68,6 @@ export const registerUser = async (req, res) => {
       username,
     });
   } catch (error) {
-    console.error('Registration error:', error.message);
     res.status(500).json({ error: 'Failed to register user' });
   }
 };
@@ -121,14 +118,11 @@ export const loginUser = async (req, res) => {
       sameSite: 'None',
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
-    console.log(refreshToken, 'refreshToken')
 
     // Save the refresh token in the database
     await TokenModel.create({ token: refreshToken });
-    console.log(accessToken, 'accessToken')
     res.status(200).json({ accessToken, message: 'User logged in successfully' ,username: existingUser.username});
   } catch (error) {
-    console.error('Error logging in user:', error.message);
     res.status(500).json({ error: "Failed to log in user" });
   }
 }
@@ -152,19 +146,17 @@ export const logoutUser = async (req, res) => {
     await TokenModel.deleteOne({ token });
     res.status(200).json({ message: 'User logged out successfully' });
   } catch (error) {
-    console.error('Error logging out user:', error.message);
     res.status(500).json({ error: "Failed to log out user" });
   }
 }
 
 /**
- * Refreshes an access token if the refresh token is valid.
+ * Refreshes an access token and refresh token if the refresh token is valid.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  * @returns {Promise<void>}
  */
 export const refreshAccessToken = async (req, res) => {
-  console.log('Refreshing access token', req.cookies.refreshToken);
   const token = req.cookies.refreshToken;
 
   // Check if the token is present
@@ -173,12 +165,10 @@ export const refreshAccessToken = async (req, res) => {
   try {
     // Check if the token exists in the database
     const exists = await TokenModel.findOne({ token });
-    console.log(exists, 'exist ed token');
     if (!exists) return res.sendStatus(403);
 
     // Verify the token
     const payload = jwt.verify(token, appConfig.jwt_refresh_secret);
-    console.log(payload, "jwt payload");
 
     // Invalidate the old token
     await TokenModel.deleteOne({ token });
@@ -199,7 +189,6 @@ export const refreshAccessToken = async (req, res) => {
     });
     res.json({ accessToken: newAccessToken });
   } catch (err) {
-    console.log(err, 'error in refresh token');
     res.sendStatus(403);
   }
 };
