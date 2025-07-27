@@ -5,6 +5,7 @@ import Protected from './pages/Protected'
 import LoginComponent from './pages/Login'
 import RegisterComponent from './pages/Signup'
 import PublicRoute from './PublicRoute'
+import UsersList from './pages/UsersList'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Protected />} />
+        <Route path="/users" element={<UsersList />} />
         <Route
         path="/login"
         element={

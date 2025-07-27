@@ -27,19 +27,7 @@ function Protected() {
         const response = await getUserDetails(accessToken);
         setUserDetails(response.data?.data);
       } catch (error) {
-        if (error.response && error.response.status >= 400 && error.response.status < 500) {
-          try {
-            // Refresh the access token
-            const { data } = await refreshAccessToken();
-            localStorage.setItem('accessToken', data.accessToken);
-            // Retry user fetch
-            return fetchUser();
-          } catch (refreshError) {
-            // If the refresh token is invalid, clear the local storage and redirect to the login page
-            localStorage.clear();
-            navigate('/login');
-          }
-        }
+       console.log(error, 'Error fetching user details');
       } finally {
         setIsUserLoading(false);
       }
@@ -79,6 +67,12 @@ function Protected() {
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           Welcome, {userDetails?.username || 'User'}!
         </h1>
+        <button
+          onClick={() => navigate('/users')}
+          className="mb-4 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg transition"
+        >
+          See all Users
+        </button>
         <p className="text-gray-600 mb-6">
           Email: <span className="font-medium">{userDetails?.email}</span>
         </p>
