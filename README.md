@@ -98,8 +98,9 @@ VITE_API_URL=http://localhost:4000
 
 ### Clone repository
 
-`git clone https://github.com/safadmt/mernrefreshaccessauthentication.git`
-`cd mernrefreshaccessauthentication`
+git clone https://github.com/safadmt/mernrefreshaccessauthentication.git
+
+cd mernrefreshaccessauthentication
 
 
 ### Set up Backend
