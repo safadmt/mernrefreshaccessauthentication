@@ -61,7 +61,7 @@ It implements:
   - Calls `/auth/logout`
   - Clears token and redirects to `/login`
 
-### 📋 Users Table Page (New!)
+### 📋 Users Table Page 
 - Fetches all users via `/user/getAll`
 - Uses protected Axios instance with auto-refresh
 - Displays a **table** of:
@@ -98,8 +98,9 @@ VITE_API_URL=http://localhost:4000
 
 ### Clone repository
 
-git clone https://github.com/safadmt/mernrefreshaccessauthentication.git
-cd mernrefreshaccessauthentication
+`git clone https://github.com/safadmt/mernrefreshaccessauthentication.git`
+`cd mernrefreshaccessauthentication`
+
 
 ### Set up Backend
 cd server
